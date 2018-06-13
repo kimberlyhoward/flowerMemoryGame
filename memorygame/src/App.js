@@ -28,10 +28,10 @@ class App extends Component {
     selectFlower = bloom => {
         const findFlower = this.state.unselectedFlowers.find(item => item.bloom === bloom);
 
-        if(findFlower === undefined) {
+        if (findFlower === undefined) {
             // failure to select a new flower
-            this.setState({ 
-                message: "You guessed incorrectly!",
+            this.setState({
+                message: "You all ready chose that one!",
                 topScore: (this.state.curScore > this.state.topScore) ? this.state.curScore : this.state.topScore,
                 curScore: 0,
                 flowers: flowers,
@@ -41,9 +41,9 @@ class App extends Component {
         else {
             // success to select a new dog
             const newflowers = this.state.unselectedflowers.filter(item => item.bloom !== bloom);
-            
-            this.setState({ 
-                message: "You guessed correctly!",
+
+            this.setState({
+                message: "Good Job",
                 curScore: this.state.curScore + 1,
                 flowers: flowers,
                 unselectedflowers: newflowers
@@ -67,7 +67,7 @@ class App extends Component {
                         <FlowerCard
                             flower={flower.bloom}
                             image={flower.image}
-                            selectFlower={this.selectFlower} 
+                            selectFlower={this.selectFlower}
                             curScore={this.state.curScore}
                         />
                     ))
