@@ -26,30 +26,27 @@ class App extends Component {
     }
 
     selectFlower = bloom => {
-        const findFlower = this.state.unselectedFlowers.find(item => item.bloom === bloom);
-
-        if (findFlower === undefined) {
-            // failure to select a new flower
+        const newunselctedFlowers = this.state.unselectedFlowers.filter(item => item.bloom !== bloom);
+        console.log(newunselctedFlowers);
+        if (newunselctedFlowers.length < this.state.unselectedFlowers.length) {
+            console.log("first click")
             this.setState({
-                message: "You all ready chose that one!",
-                topScore: (this.state.curScore > this.state.topScore) ? this.state.curScore : this.state.topScore,
-                curScore: 0,
-                flowers: flowers,
-                unselectedflowers: flowers
+                message: "Good Job",
+                curScore: this.state.curScore + 1
             });
         }
         else {
-            // success to select a new dog
-            const newflowers = this.state.unselectedflowers.filter(item => item.bloom !== bloom);
-
+            console.log("all ready clicked")
             this.setState({
-                message: "Good Job",
-                curScore: this.state.curScore + 1,
-                flowers: flowers,
-                unselectedflowers: newflowers
+                message: "You all ready chose that one!",
+                topScore: (this.state.curScore > this.state.topScore) ? this.state.curScore : this.state.topScore,
+                curScore: 0
             });
         }
-
+        this.setState({
+            unselectedFlowers: newunselctedFlowers
+        }
+        )
         this.shuffleArray(flowers);
     };
 
@@ -65,6 +62,7 @@ class App extends Component {
                 {
                     this.state.flowers.map(flower => (
                         <FlowerCard
+                            key={flower.bloom}
                             flower={flower.bloom}
                             image={flower.image}
                             selectFlower={this.selectFlower}
@@ -78,4 +76,3 @@ class App extends Component {
 }
 
 export default App;
-

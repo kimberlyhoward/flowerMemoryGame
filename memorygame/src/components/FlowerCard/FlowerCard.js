@@ -4,7 +4,7 @@ import "./FlowerCard.css";
 const FlowerCard = props => (
     <div className="card">
         <div className="img-container">
-            <a onClick={() => props.selectFlower(props.bloom)} 
+            <a onClick={() => props.selectFlower(props.flower)} 
                 className={props.curScore === 0 ? "style_prevu_kit style_prevu_kit_ex" : "style_prevu_kit"}
             >
                 <img alt={props.bloom} src={props.image} />
