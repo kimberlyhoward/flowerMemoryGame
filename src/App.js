@@ -6,6 +6,7 @@ import Navpills from './components/Navpills'
 import Title from './components/Title'
 import FlowerCard from './components/FlowerCard'
 
+
 class App extends Component {
     state = {
         message: "Click an image to begin!",
@@ -52,6 +53,7 @@ class App extends Component {
 
     render() {
         return (
+
             <Wrapper>
                 <Navpills
                     message={this.state.message}
